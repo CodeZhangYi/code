@@ -1,0 +1,40 @@
+<view class='{{m1.styleType(navbarData.background)}} nav-header' style='height: {{height*2 + 29}}px;'>
+  <!-- // 导航栏 中间的标题 -->
+  <view class='nav-title' style='padding-top: {{height*2 }}px; '>
+    <view class="nav-bar">
+      <image class="nav-search-icon" style="bottom:{{-height*2}}px;" src="../../assets/image/Search-Icon.png" mode="widthFix"/>
+      <input class="search" type="text" placeholder="大家正在搜:某件商品" style="bottom:{{-height*2-44 }}px;width:393rpx; margin-left: -30rpx;"/>
+    </view>
+  </view>
+  <view style='display: flex; justify-content: space-around;flex-direction: column;'>
+ 
+    <!-- //  其中wx:if='{{navbarData.showCapsule}}' 是控制左上角按钮的显示隐藏，首页不显示 -->
+    <view class='nav-capsule' style='height: {{height*2 + 44}}px; width:200rpx ;font-weight: 600;'
+     wx:if='{{navbarData.showCapsule}}'>
+   		<!-- //返回按钮上一页 -->
+      <!-- <view bindtap='_navback' wx:if='{{navbarData.pic}}'>
+        <image src='{{navbarData.pic}}' class='back-pre'></image>
+      </view> -->
+      <view class="nav-left-title">线下</view>
+      <!-- //返回按钮首页 -->
+      <!-- <view bindtap='_backhome' wx:if='{{navbarData.home}}'>
+        <image src='{{navbarData.home}}' class='back-home'></image>
+      </view> -->
+    </view>
+  </view>
+</view>
+<!--//方在html中的方法调用-->
+<!-- //我们在父组件返回不同的值的时候我们获取的class也会不同，如果返回的是1的话，组件顶部导航栏会变成透明色-->
+<wxs module="m1">
+  var styleType = function (val) {
+    switch (val) {
+      case 1:
+        return 'nav-wrap';
+        break;
+      default:
+        return 'nav-wrap1';
+        break
+    }
+  }
+  module.exports.styleType = styleType;
+</wxs>
